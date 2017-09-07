@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../day2/js/jquery-2.1.0.js"></script>
+	</head>
+
+	<body>
+
+		<table id="table" border="1" cellspacing="0">
+
+		</table>
+		<button id="button">按钮</button>
+
+		<script>
+			$('#button').click(function() {
+				$.ajax({
+					type: "get",
+					url: "list.json",
+					dataType: "json",
+					success: function(data) {
+						for(var i = 0; i < data.length; i++) {
+							$("#table").append(
+								"<tr>" + "<td>" + data[i].name +
+								"</td>" + "<td>" + data[i].age +
+								"</td>" + "</tr>"
+							)
+
+						}
+					}
+				});
+			})
+		</script>
+	</body>
+
+</html>
